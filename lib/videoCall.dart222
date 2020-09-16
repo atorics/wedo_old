@@ -1,0 +1,47 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:twilio_programmable_video_example/shared/services/backend_service.dart';
+
+class VideoCall extends StatefulWidget {
+  VideoCall({Key key}) : super(key: key);
+
+  @override
+  _VideoCallState createState() => _VideoCallState();
+}
+
+class _VideoCallState extends State<VideoCall> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Video Call"),
+          actions: <Widget>[],
+          // bottom: PreferredSize(
+          //   preferredSize: Size.fromHeight(130.0),
+          //   child:// _buildUserInfo(user),
+          // ),
+        ),
+        body: Provider<BackendService>(
+      create: (_) => FirebaseFunctions.instance,
+      child: MaterialApp(
+        title: 'Twilio Programmable Video',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          appBarTheme: AppBarTheme(
+            color: Colors.blue,
+            textTheme: TextTheme(
+              headline6: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w500,
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ),
+        home: JoinRoomPage(),
+      ),
+    );
+        
+        );
+  }
+}
