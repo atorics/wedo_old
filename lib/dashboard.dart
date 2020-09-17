@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wedo/channelListPage.dart';
+import 'package:wedo/shared/services/firebase_auth.dart';
 
 class Dashboard extends StatefulWidget {
   Dashboard({Key key}) : super(key: key);
@@ -37,6 +38,9 @@ class _DashboardState extends State<Dashboard> {
         title: Text("Dashboard"),
         actions: <Widget>[
           FlatButton(
+            onPressed: () {
+              AuthProvider().logout();
+            },
             key: Key("logout"),
             child: Text(
               "Logout",
@@ -67,33 +71,40 @@ class _DashboardState extends State<Dashboard> {
                 onPressed: () {},
                 child:
                     const Text('Viceo Call ', style: TextStyle(fontSize: 20)),
-              )
+              ),
+              Text("Current user")
             ],
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(onTap: _onTap, items: [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.home),
-          title: Text('Home'),
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.chat),
-          title: Text('Chat'),
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.camera),
-          title: Text('Camera'),
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.call),
-          title: Text('Call'),
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.settings),
-          title: Text('Settings'),
-        ),
-      ]),
+      bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          onTap: _onTap,
+          items: [
+            BottomNavigationBarItem(
+              backgroundColor: Colors.white,
+              icon: Icon(Icons.home),
+              title: Text('Home'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.chat),
+              title: Text('Chat'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.camera),
+              title: Text(
+                'Camera',
+              ),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.call),
+              title: Text('Call'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.settings),
+              title: Text('Settings'),
+            ),
+          ]),
     );
   }
 }
