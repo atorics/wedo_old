@@ -1,0 +1,12 @@
+name: Testing
+on:
+  workflow_dispatch
+jobs:
+  test:
+    name: Build and test
+    runs-on: macOS-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v1
+      - name: Testing iOS app
+        run: exec ./.github/scripts/test_app.sh
