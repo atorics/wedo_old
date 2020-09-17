@@ -18,6 +18,7 @@ class ChannelPage extends StatelessWidget {
           MessageInput(
             actions: <Widget>[
               FlatButton(
+                onPressed: () {},
                 key: Key("logout"),
                 child: Text(
                   "Logout",

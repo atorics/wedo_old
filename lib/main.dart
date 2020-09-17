@@ -1,7 +1,8 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 import 'package:wedo/channelListPage.dart';
-import 'package:wedo/dashboard.dart';
+import 'package:wedo/mainScreen.dart';
 
 void main() async {
   final client = Client(
@@ -20,6 +21,8 @@ void main() async {
     'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoicG9saXNoZWQtc2t5LTUifQ.v5FPFHuySUHj0S3ugRJzOShQwIz6ltidbVGYpU2i2yo',
   );
 
+  Firebase.initializeApp();
+
   runApp(MyApp(client));
 }
 
@@ -35,7 +38,11 @@ class MyApp extends StatelessWidget {
         client: client,
         child: child,
       ),
-      home: Dashboard(),
+      theme: ThemeData(
+        primaryColor: Colors.deepPurple,
+      ),
+      home: MainScreen(),
+      debugShowCheckedModeBanner: false,
       routes: <String, WidgetBuilder>{
         '/channelList': (BuildContext context) => ChannelListPage(),
       },

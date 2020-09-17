@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 import 'package:wedo/channelPage.dart';
-import 'package:wedo/main.dart';
 
 class ChannelListPage extends StatelessWidget {
   @override
